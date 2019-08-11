@@ -27,7 +27,7 @@ public:
 	*/
 
 	void multiThreadProcessImages(
-		OfxRectI const& window, OfxPointD const& rs) override;
+		OfxRectI window) override;
 
 	void set_source(
 		OFX::Image* value) noexcept;
@@ -41,6 +41,9 @@ public:
 	void set_vertical_scale(
 		double value) noexcept;
 
+	void set_y_flipped(
+		bool value) noexcept;
+
 private:
 	void tile(
 		OfxRectI const& window, cv::Mat const& input, cv::Mat& output);
@@ -49,5 +52,6 @@ private:
 	double horizontal_scale{ tiler::param_horizontal_scale_default };
 	double vertical_scale{ tiler::param_vertical_scale_default };
 	OfxPointD center{ tiler::param_center_x_default, tiler::param_center_y_default };
+	bool is_y_flipped{ false };
 };
 

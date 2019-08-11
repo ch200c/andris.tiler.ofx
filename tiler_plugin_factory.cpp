@@ -6,7 +6,7 @@
 
 tiler_plugin_factory::tiler_plugin_factory() noexcept :
 	OFX::PluginFactoryHelper<tiler_plugin_factory>(
-		"andris.tiler.vegas", 1, 1)
+		"andris.tiler", 1, 1)
 {
 }
 
@@ -17,7 +17,7 @@ void tiler_plugin_factory::describe(
 	desc.setPluginGrouping("AN DRIS");
 	desc.addSupportedContext(OFX::eContextFilter);
 	desc.addSupportedBitDepth(OFX::eBitDepthUByte);
-
+	
 	desc.setRenderTwiceAlways(false);
 }
 
@@ -98,5 +98,9 @@ OFX::ImageEffect* tiler_plugin_factory::createInstance(
 }
 
 
-static auto factory{ tiler_plugin_factory() };
-mRegisterPluginFactoryInstance(factory);
+void OFX::Plugin::getPluginIDs(OFX::PluginFactoryArray& array)
+{
+	static auto factory{ tiler_plugin_factory() };
+	array.push_back(&factory);
+}
+

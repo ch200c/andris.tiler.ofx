@@ -78,6 +78,7 @@
     <LinkIncremental>true</LinkIncremental>
     <TargetExt>.ofx</TargetExt>
     <OutDir>$(ProjectDir)$(Platform)\$(Configuration)\</OutDir>
+    <TargetName>andris.tiler</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -87,6 +88,7 @@
     <LinkIncremental>false</LinkIncremental>
     <TargetExt>.ofx</TargetExt>
     <OutDir>$(ProjectDir)$(Platform)\$(Configuration)\</OutDir>
+    <TargetName>andris.tiler</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -114,8 +116,8 @@
       <PreprocessorDefinitions>_DEBUG;TILERVEGAS_EXPORTS;_WINDOWS;_USRDLL;NOMINMAX;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>C:\Users\User\source\repos\andris-fx\util;C:\Users\User\Downloads\opencv-410\build\include;C:\Users\User\source\repos\natron-openfx\Support\Plugins\include;C:\Users\User\source\repos\natron-openfx\Support\include;C:\Users\User\source\repos\natron-openfx\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>C:\Users\User\source\repos\andris-fx\util;C:\Users\User\Downloads\opencv-410\build\include;C:\Users\User\source\repos\openfx-master-1.4\Support\Plugins\include;C:\Users\User\source\repos\openfx-master-1.4\Support\include;C:\Users\User\source\repos\openfx-master-1.4\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp14</LanguageStandard>
       <AdditionalOptions>/Zc:__cplusplus %(AdditionalOptions)</AdditionalOptions>
       <TreatWarningAsError>false</TreatWarningAsError>
     </ClCompile>
@@ -123,11 +125,11 @@
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
-      <AdditionalLibraryDirectories>C:\Users\User\Downloads\opencv-410\custom-build\lib\Debug;C:\Users\User\source\repos\natron-openfx\Support\Library\Debug-x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Users\User\Downloads\opencv-410\custom-build\lib\Debug;C:\Users\User\source\repos\openfx-master-1.4\Support\Library\Debug-x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>opencv_core410d.lib;opencv_imgproc410d.lib;ofxSupport.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>copy /Y "$(TargetPath)" /B "C:\Program Files\VEGAS\VEGAS Pro 16.0\OFX Video Plug-Ins\andris.ofx.bundle\Contents\Win64"</Command>
+      <Command>copy /Y "$(TargetPath)" /B "C:\Program Files\Common Files\OFX\Plugins\andris.tiler.ofx.bundle\Contents\Win64"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -159,12 +161,12 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NDEBUG;TILERVEGAS_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;TILERVEGAS_EXPORTS;_WINDOWS;_USRDLL;NOMINMAX;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>C:\Users\User\Downloads\opencv-410\build\include;C:\Users\User\source\repos\natron-openfx\Support\Plugins\include;C:\Users\User\source\repos\natron-openfx\Support\include;C:\Users\User\source\repos\andris-fx\util;C:\Users\User\source\repos\natron-openfx\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\User\Downloads\opencv-410\build\include;C:\Users\User\source\repos\openfx-master-1.4\Support\Plugins\include;C:\Users\User\source\repos\openfx-master-1.4\Support\include;C:\Users\User\source\repos\andris-fx\util;C:\Users\User\source\repos\openfx-master-1.4\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>/Zc:__cplusplus %(AdditionalOptions)</AdditionalOptions>
-      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard>stdcpp14</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -173,10 +175,10 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
       <AdditionalDependencies>opencv_core410.lib;opencv_imgproc410.lib;ofxSupport.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>C:\Users\User\Downloads\opencv-410\custom-build\lib\Release;C:\Users\User\source\repos\natron-openfx\Support\Library\Release-x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Users\User\Downloads\opencv-410\custom-build\lib\Release;C:\Users\User\source\repos\openfx-master-1.4\Support\Library\Release-x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
-      <Command>copy /Y "$(TargetPath)" /B "C:\Program Files\VEGAS\VEGAS Pro 16.0\OFX Video Plug-Ins\andris.ofx.bundle\Contents\Win64"</Command>
+      <Command>copy /Y "$(TargetPath)" /B "C:\Program Files\Common Files\OFX\Plugins\andris.tiler.ofx.bundle\Contents\Win64"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>

@@ -16,7 +16,7 @@ void tiler_processor::set_source(
 }
 
 void tiler_processor::multiThreadProcessImages(
-	OfxRectI const& window, OfxPointD const& rs) 
+	OfxRectI window) 
 {
 	auto source_data{ source->getPixelData() };
 	if (!source_data)
@@ -26,8 +26,7 @@ void tiler_processor::multiThreadProcessImages(
 
 	auto source_pixel_depth{ source->getPixelDepth() };
 	auto source_pixel_components{ source->getPixelComponents() };
-	auto source_type{ util::mat_type(
-		source_pixel_components, source_pixel_depth) };
+	auto source_type{ util::mat_type(source_pixel_components, source_pixel_depth) };
 
 	if (source_type == -1)
 	{
@@ -52,8 +51,7 @@ void tiler_processor::multiThreadProcessImages(
 
 	auto output_pixel_depth{ _dstImg->getPixelDepth() };
 	auto output_pixel_components{ _dstImg->getPixelComponents() };
-	auto output_type{ util::mat_type(
-		output_pixel_components, output_pixel_depth) };
+	auto output_type{ util::mat_type(output_pixel_components, output_pixel_depth) };
 
 	if (output_type == -1)
 	{
@@ -81,7 +79,10 @@ void tiler_processor::multiThreadProcessImages(
 
 	tile(window, resized_mat, output_mat);
 
-	cv::flip(output_mat, output_mat, 0);
+	if (is_y_flipped)
+	{
+		cv::flip(output_mat, output_mat, 0);
+	}
 }
 
 
@@ -101,6 +102,12 @@ void tiler_processor::set_vertical_scale(
 	double value) noexcept
 {
 	vertical_scale = value;
+}
+
+void tiler_processor::set_y_flipped(
+	bool value) noexcept
+{
+	is_y_flipped = value;
 }
 
 void tiler_processor::tile(

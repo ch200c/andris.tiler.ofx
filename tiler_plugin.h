@@ -31,6 +31,7 @@ public:
 		std::string const& paramName) noexcept override;
 
 private:
+	OFX::ImageEffectHostDescription* host_description{ OFX::getImageEffectHostDescription() };
 	OFX::Clip* source{ fetchClip(kOfxImageEffectSimpleSourceClipName) };
 	OFX::Clip* output{ fetchClip(kOfxImageEffectOutputClipName) };
 	OFX::BooleanParam* proportional{ fetchBooleanParam(tiler::param_proportional) };

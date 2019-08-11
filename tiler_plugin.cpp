@@ -31,26 +31,24 @@ void tiler_plugin::render(
 		return;
 	}
 
-	auto output_pixel_depth{ output->getPixelDepth() };
-	auto output_pixel_components{ output->getPixelComponents() };
-
-	auto source_pixel_depth{ source_image->getPixelDepth() };
-	auto source_pixel_components{ source_image->getPixelComponents() };
-
-	if (source_pixel_depth != output_pixel_depth ||
-		source_pixel_components != output_pixel_components)
-	{
-		return;
-	}
-
 	auto processor{ tiler_processor(*this) };
 
-	processor.setRenderWindow(args.renderWindow, { 1.0, 1.0 });
+	processor.setRenderWindow(args.renderWindow);
 	processor.set_source(source_image.get());
 	processor.setDstImg(output_image.get());
-	processor.set_center(center->getValueAtTime(args.time));
+
+	auto center_x{ 0.0 };
+	auto center_y{ 0.0 };
+	center->getValueAtTime(args.time, center_x, center_y);
+	processor.set_center({center_x, center_y});
 	processor.set_horizontal_scale(horizontal_scale->getValueAtTime(args.time));
 	processor.set_vertical_scale(vertical_scale->getValueAtTime(args.time));
+
+	if (host_description->hostName.find("com.sonycreativesoftware.vegas") != std::string::npos)
+	{
+		processor.set_y_flipped(true);
+	}
+
 	processor.process();
 }
 
@@ -61,13 +59,15 @@ bool tiler_plugin::isIdentity(
 {
 	auto _horizontal_scale{ horizontal_scale->getValueAtTime(args.time) };
 	auto _vertical_scale{ vertical_scale->getValueAtTime(args.time) };
-	auto _center{ center->getValueAtTime(args.time) };
+	auto center_x{ 0.0 };
+	auto center_y{ 0.0 };
+	center->getValueAtTime(args.time, center_x, center_y);
 
 	auto result { 
 		_horizontal_scale == 1.0 &&
 		_vertical_scale == 1.0 &&
-		_center.x == 0.5 &&
-		_center.y == 0.5 };
+		center_x == 0.5 &&
+		center_y == 0.5 };
 
 	if (result)
 	{
