@@ -44,10 +44,10 @@ void tiler_plugin::render(
 	processor.set_horizontal_scale(horizontal_scale->getValueAtTime(args.time));
 	processor.set_vertical_scale(vertical_scale->getValueAtTime(args.time));
 
-	if (host_description->hostName.find("com.sonycreativesoftware.vegas") != std::string::npos)
+	/*if (host_description->hostName.find("com.sonycreativesoftware.vegas") != std::string::npos)
 	{
 		processor.set_y_flipped(true);
-	}
+	}*/
 
 	processor.process();
 }
