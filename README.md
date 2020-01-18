@@ -3,7 +3,7 @@ OpenFX plugin that produces a tile effect with an adjustable offset and scaling
 
 Input | Output
 ----- | -----
-![Input](http://an-dris.com/images/tiler/input.jpg) | ![Output](http://an-dris.com/images/tiler/output.jpg)
+![Input](images/input.jpg) | ![Output](images/output.jpg)
 
 Photo by Jakob Owens on Unsplash
 
