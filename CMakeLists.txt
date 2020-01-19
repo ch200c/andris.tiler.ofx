@@ -25,7 +25,7 @@ cmake_minimum_required(VERSION 3.5)
 # LANGUAGES is not specified CMake enables both CXX and C.
 project(andris.tiler.ofx
         LANGUAGES CXX C
-        VERSION 1.1.0.0)
+        VERSION 1.1.1.0)
 
 # Defines the CMAKE_INSTALL_LIBDIR, CMAKE_INSTALL_BINDIR and many other useful macros.
 # See https://cmake.org/cmake/help/latest/module/GNUInstallDirs.html
